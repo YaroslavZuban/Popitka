@@ -9,26 +9,26 @@ public class GraphicalInterface extends JFrame {
     private TemperatureInterface temperatureInterface;
     private Double resultTemperature;
     private Double number;
-    private JButton kelvin;
-    private JButton celsius;
-    private JButton fahrenheit;
-    private JLabel result;
-    private JTextField countLabel;
-    private JLabel text;
-    private JPanel panel;
-    private JPanel panelIsTemperature;
-    double Null=0;
+    private final JButton kelvin;
+    private final JButton celsius;
+    private final JButton fahrenheit;
+    private final JLabel result;
+    private final JTextField countLabel;
+    private final JLabel text;
+    private final JPanel panel;
+    private final JPanel panelIsTemperature;
+    double Null = 0;
 
-    private JButton isFahrenheit;
-    private JButton isKelvin;
-    private JButton isCelsius;
+    private final JButton isFahrenheit;
+    private final JButton isKelvin;
+    private final JButton isCelsius;
 
     public GraphicalInterface() {
         super("Перевод температуры");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        Null=0;
+        Null = 0;
         text = new JLabel("Перевод в");
         countLabel = new JTextField(15);
 
@@ -94,112 +94,87 @@ public class GraphicalInterface extends JFrame {
     private void setIsCelsius() {
         temperatureInterface = new TemperatureCelsius();
 
-        celsius.addActionListener(t -> {
-            try {
-                number = Double.parseDouble(countLabel.getText());
+        try {
+            number = Double.parseDouble(countLabel.getText());
+
+            celsius.addActionListener(t -> {
                 resultTemperature = temperatureInterface.celsius(number);
                 resultCount(" C");
-            } catch (NumberFormatException c) {
-                errorConsole();
-                number=Null;
-            }
-        });
 
-        kelvin.addActionListener(t -> {
-            try {
-                number = Double.parseDouble(countLabel.getText());
+            });
+
+            kelvin.addActionListener(t -> {
                 resultTemperature = temperatureInterface.kelvin(number);
                 resultCount(" K");
-            } catch (NumberFormatException c) {
-                errorConsole();
-                number=Null;
-            }
-        });
 
-        fahrenheit.addActionListener(t -> {
-            try {
-                number = Double.parseDouble(countLabel.getText());
+            });
+
+            fahrenheit.addActionListener(t -> {
                 resultTemperature = temperatureInterface.fahrenheit(number);
                 resultCount(" Ф");
-            } catch (NumberFormatException y) {
-                errorConsole();
-                number=Null;
-            }
-        });
+
+            });
+        } catch (NumberFormatException y) {
+            errorConsole();
+
+        }
     }
 
     private void setIsKelvin() {
         temperatureInterface = new TemperatureKelvin();
+        try {
+            number = Double.parseDouble(countLabel.getText());
 
-        celsius.addActionListener(t -> {
-            try {
+            celsius.addActionListener(t -> {
                 number = Double.parseDouble(countLabel.getText());
                 resultTemperature = temperatureInterface.celsius(number);
                 resultCount(" C");
-            } catch (NumberFormatException c) {
-                errorConsole();
-                number=Null;
-            }
-        });
+            });
 
-        kelvin.addActionListener(t -> {
-            try {
+            kelvin.addActionListener(t -> {
+
                 number = Double.parseDouble(countLabel.getText());
                 resultTemperature = temperatureInterface.kelvin(number);
                 resultCount(" K");
-            } catch (NumberFormatException c) {
-                errorConsole();
-                number=Null;
-            }
-        });
 
-        fahrenheit.addActionListener(t -> {
-            try {
+            });
+
+            fahrenheit.addActionListener(t -> {
                 number = Double.parseDouble(countLabel.getText());
                 resultTemperature = temperatureInterface.fahrenheit(number);
                 resultCount(" Ф");
-            } catch (NumberFormatException y) {
-                errorConsole();
-                number=Null;
-            }
-        });
+
+            });
+        } catch (Exception e) {
+            errorConsole();
+        }
     }
 
     private void setIsFahrenheit() {
         temperatureInterface = new TemperatureFahrenheit();
 
-        celsius.addActionListener(t -> {
-            try {
-                number = Double.parseDouble(countLabel.getText());
+        try {
+            number = Double.parseDouble(countLabel.getText());
+
+            celsius.addActionListener(t -> {
                 resultTemperature = temperatureInterface.celsius(number);
                 resultCount(" C");
-            } catch (NumberFormatException c) {
-                errorConsole();
-                number=Null;
-            }
-        });
 
-        kelvin.addActionListener(t -> {
-            try {
-                number = Double.parseDouble(countLabel.getText());
+            });
+
+            kelvin.addActionListener(t -> {
                 resultTemperature = temperatureInterface.kelvin(number);
                 resultCount(" K");
-            } catch (NumberFormatException c) {
-                errorConsole();
-                number=Null;
-            }
-        });
 
-        fahrenheit.addActionListener(t -> {
-            try {
-                number = Double.parseDouble(countLabel.getText());
+            });
+
+            fahrenheit.addActionListener(t -> {
                 resultTemperature = temperatureInterface.fahrenheit(number);
                 resultCount(" Ф");
-            } catch (NumberFormatException y) {
-                errorConsole();
-                number=Null;
-            }
-        });
+            });
+        } catch (Exception n) {
+            errorConsole();
+        }
     }
 
     private void resultCount(String measurementSystem) {
