@@ -182,7 +182,6 @@ public class GraphicalInterface extends JFrame {
     }
 
     private void errorConsole() {
-        System.out.println("ошибка");
         JDialog dialog = createDialog("Ошибка", true);
         dialog.setLocationRelativeTo(null);
 
