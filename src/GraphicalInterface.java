@@ -126,21 +126,17 @@ public class GraphicalInterface extends JFrame {
             number = Double.parseDouble(countLabel.getText());
 
             celsius.addActionListener(t -> {
-                number = Double.parseDouble(countLabel.getText());
                 resultTemperature = temperatureInterface.celsius(number);
                 resultCount(" C");
             });
 
             kelvin.addActionListener(t -> {
-
-                number = Double.parseDouble(countLabel.getText());
                 resultTemperature = temperatureInterface.kelvin(number);
                 resultCount(" K");
 
             });
 
             fahrenheit.addActionListener(t -> {
-                number = Double.parseDouble(countLabel.getText());
                 resultTemperature = temperatureInterface.fahrenheit(number);
                 resultCount(" Ф");
 
