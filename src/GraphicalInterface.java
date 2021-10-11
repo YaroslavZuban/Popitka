@@ -46,39 +46,30 @@ public class GraphicalInterface extends JFrame {
 
         setIconImage(new ImageIcon("C:\\Users\\ben70\\IdeaProjects\\Popitka\\src\\termo.png").getImage());
 
+        try {
+            number = Double.parseDouble(countLabel.getText());
+        } catch (Exception exception) {
+
+        }
+
         isCelsius.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    number = Double.parseDouble(countLabel.getText());
-                    temperatureInterface = new TemperatureCelsius();
-                } catch (Exception exception) {
-                    errorConsole();
-                }
+                temperatureInterface = new TemperatureCelsius();
             }
         });
 
         isKelvin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    number = Double.parseDouble(countLabel.getText());
-                    temperatureInterface = new TemperatureKelvin();
-                } catch (Exception exception) {
-                    errorConsole();
-                }
+                temperatureInterface = new TemperatureKelvin();
             }
         });
 
         isFahrenheit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    number = Double.parseDouble(countLabel.getText());
-                    temperatureInterface = new TemperatureFahrenheit();
-                } catch (Exception exception) {
-                    errorConsole();
-                }
+                temperatureInterface = new TemperatureFahrenheit();
             }
         });
 
@@ -111,24 +102,38 @@ public class GraphicalInterface extends JFrame {
 
     private void set() {
         celsius.addActionListener(t -> {
-            System.out.println(1);
-            resultTemperature = temperatureInterface.celsius(number);
-            resultCount(" C");
+            try {
+                number = Double.parseDouble(countLabel.getText());
+                resultTemperature = temperatureInterface.celsius(number);
+                resultCount();
+            } catch (Exception exception) {
+                errorConsole();
+            }
         });
 
         kelvin.addActionListener(t -> {
-            resultTemperature = temperatureInterface.kelvin(number);
-            resultCount(" K");
+            try {
+                number = Double.parseDouble(countLabel.getText());
+                resultTemperature = temperatureInterface.kelvin(number);
+                resultCount();
+            } catch (Exception exception) {
+                errorConsole();
+            }
         });
 
         fahrenheit.addActionListener(t -> {
-            resultTemperature = temperatureInterface.fahrenheit(number);
-            resultCount(" Ф");
+            try {
+                number = Double.parseDouble(countLabel.getText());
+                resultTemperature = temperatureInterface.fahrenheit(number);
+                resultCount();
+            } catch (Exception exception) {
+                errorConsole();
+            }
         });
     }
 
-    private void resultCount(String measurementSystem) {
-        result.setText("Результат: " + resultTemperature + measurementSystem);
+    private void resultCount() {
+        result.setText("Результат: " + resultTemperature + temperatureInterface.formate());
     }
 
     private void errorConsole() {

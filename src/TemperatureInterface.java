@@ -5,4 +5,5 @@ public interface TemperatureInterface {
 
     double celsius(double temperature);
 
+    String formate();
 }
